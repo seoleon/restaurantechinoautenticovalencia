@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mey-Mey Docs: guía de cocina cantonesa en Valencia</title>
+  <meta name="description" content="Guía documental sobre Mey-Mey en Valencia: tradición cantonesa, producto, técnica, ambiente y experiencia en un restaurante chino auténtico y elegante." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --bg-soft:#121933;
+      --panel:#161f3d;
+      --panel-2:#1c274d;
+      --text:#eef2ff;
+      --muted:#b8c1e0;
+      --line:#2e3a68;
+      --gold:#e5c07b;
+      --gold-soft:#f6ddb0;
+      --accent:#8fb8ff;
+      --accent-2:#6b7cff;
+      --shadow:0 22px 60px rgba(0,0,0,.28);
+      --radius:20px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(111,124,255,.16), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(229,192,123,.10), transparent 25%),
+        linear-gradient(180deg, #09101f 0%, #0d1327 100%);
+      color:var(--text);
+      line-height:1.75;
+    }
+
+    a{
+      color:var(--gold-soft);
+      text-decoration:none;
+      transition:.25s ease;
+    }
+
+    a:hover{
+      color:#fff;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:280px minmax(0, 1fr);
+      min-height:100vh;
+    }
+
+    .sidebar{
+      position:sticky;
+      top:0;
+      height:100vh;
+      padding:28px 20px;
+      border-right:1px solid var(--line);
+      background:rgba(10,16,32,.84);
+      backdrop-filter:blur(10px);
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding-bottom:22px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:22px;
+    }
+
+    .brand small{
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .brand strong{
+      font-size:1.2rem;
+      color:var(--text);
+    }
+
+    .brand span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .nav-title{
+      color:var(--gold);
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin:22px 0 10px;
+      font-weight:700;
+    }
+
+    .nav{
+      display:grid;
+      gap:8px;
+    }
+
+    .nav a{
+      display:block;
+      padding:10px 12px;
+      border-radius:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .nav a:hover{
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+    }
+
+    .sidebar-card{
+      margin-top:24px;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      box-shadow:var(--shadow);
+    }
+
+    .sidebar-card strong{
+      display:block;
+      color:var(--gold-soft);
+      margin-bottom:8px;
+      font-size:14px;
+    }
+
+    .sidebar-card p{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.65;
+    }
+
+    .content{
+      padding:34px 34px 60px;
+    }
+
+    .container{
+      width:min(var(--max), 100%);
+      margin:0 auto;
+    }
+
+    .hero{
+      padding:8px 0 24px;
+    }
+
+    .hero-box{
+      background:
+        linear-gradient(135deg, rgba(111,124,255,.12), rgba(229,192,123,.08)),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:38px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-box:after{
+      content:"";
+      position:absolute;
+      right:-50px;
+      top:-50px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(229,192,123,.18), transparent 68%);
+      pointer-events:none;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border:1px solid rgba(143,184,255,.24);
+      border-radius:999px;
+      background:rgba(143,184,255,.08);
+      color:var(--accent);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3{
+      margin:0 0 16px;
+      line-height:1.15;
+    }
+
+    h1{
+      font-size:clamp(2rem, 4vw, 3.8rem);
+      max-width:12ch;
+    }
+
+    h2{
+      font-size:clamp(1.4rem, 2vw, 2.2rem);
+      color:var(--gold-soft);
+      margin-top:6px;
+    }
+
+    h3{
+      font-size:1.05rem;
+      color:var(--accent);
+    }
+
+    .lead{
+      max-width:72ch;
+      color:var(--muted);
+      font-size:1.05rem;
+      margin:0 0 16px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:26px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 20px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:15px;
+      min-width:200px;
+      transition:.25s ease;
+      border:1px solid var(--line);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, #e5c07b, #c9963f);
+      color:#1a1407;
+      border-color:transparent;
+    }
+
+    .btn-primary:hover{
+      color:#120e06;
+      transform:translateY(-1px);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+    }
+
+    .btn-secondary:hover{
+      border-color:rgba(229,192,123,.4);
+      color:var(--gold-soft);
+    }
+
+    .doc-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:26px;
+    }
+
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .panel p:last-child{margin-bottom:0}
+
+    .section{
+      margin-top:22px;
+    }
+
+    .section-box{
+      background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.012));
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .kpi-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .kpi{
+      background:rgba(255,255,255,.025);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px;
+    }
+
+    .kpi strong{
+      display:block;
+      color:var(--gold-soft);
+      margin-bottom:8px;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .kpi p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .note{
+      margin-top:18px;
+      padding:16px 18px;
+      border-left:4px solid var(--gold);
+      border-radius:14px;
+      background:rgba(229,192,123,.08);
+      color:var(--muted);
+    }
+
+    .note strong{
+      color:var(--gold-soft);
+    }
+
+    .toc-inline{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    .toc-inline a{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .toc-inline a:hover{
+      color:var(--text);
+      border-color:rgba(143,184,255,.4);
+    }
+
+    ul{
+      margin:0;
+      padding-left:20px;
+    }
+
+    li{margin-bottom:10px}
+
+    .footer{
+      margin-top:28px;
+      padding:20px 0 0;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .footer strong{
+      color:var(--gold-soft);
+    }
+
+    @media (max-width: 1024px){
+      .layout{
+        grid-template-columns:1fr;
+      }
+
+      .sidebar{
+        position:relative;
+        height:auto;
+        border-right:none;
+        border-bottom:1px solid var(--line);
+      }
+
+      .content{
+        padding:24px 18px 50px;
+      }
+
+      .doc-grid,
+      .kpi-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-box,
+      .panel,
+      .section-box{
+        padding:24px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <small>Docs Site</small>
+        <strong>Mey-Mey Docs</strong>
+        <span>Guía de cocina cantonesa en Valencia</span>
+      </div>
+
+      <div class="nav-title">Navegación</div>
+      <nav class="nav">
+        <a href="#vision-general">Visión general</a>
+        <a href="#tradicion">Tradición cantonesa</a>
+        <a href="#producto">Producto y técnica</a>
+        <a href="#experiencia">Experiencia y ambiente</a>
+        <a href="#por-que-destaca">Por qué destaca</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="sidebar-card">
+        <strong>Acceso rápido</strong>
+        <p>
+          Para descubrir un
+          <a href="https://www.mey-mey.com/" target="_blank" rel="noopener noreferrer">restaurante chino auténtico Valencia</a>,
+          Mey-Mey reúne tradición, técnica y una experiencia gastronómica cuidada.
+        </p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="container">
+        <section class="hero" id="vision-general">
+          <div class="hero-box">
+            <div class="badge">Documentación pública</div>
+            <h1>Mey-Mey Docs: guía de cocina cantonesa en Valencia</h1>
+            <p class="lead">
+              Esta guía resume la propuesta gastronómica de Mey-Mey desde una perspectiva clara y estructurada:
+              tradición cantonesa, respeto por el producto, técnica culinaria y una experiencia de mesa construida
+              con equilibrio y personalidad.
+            </p>
+            <p class="lead">
+              Mey-Mey representa una forma más refinada de acercarse a la cocina china en Valencia. Su valor no se
+              apoya únicamente en los platos, sino en la coherencia global de la experiencia, en la atmósfera del
+              espacio y en una identidad culinaria que transmite autenticidad sin exageraciones.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://www.mey-mey.com/" target="_blank" rel="noopener noreferrer">Visitar web oficial</a>
+              <a class="btn btn-secondary" href="#contacto">Ver datos de contacto</a>
+            </div>
+
+            <div class="toc-inline">
+              <a href="#tradicion">Tradición</a>
+              <a href="#producto">Producto</a>
+              <a href="#experiencia">Experiencia</a>
+              <a href="#por-que-destaca">Diferenciación</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="doc-grid">
+            <article class="panel">
+              <h2>Resumen de la propuesta</h2>
+              <p>
+                Mey-Mey se mueve dentro de una idea de gastronomía donde la cocina china se interpreta con seriedad,
+                sensibilidad y oficio. La tradición cantonesa actúa como base, pero la experiencia no se limita a la
+                fidelidad culinaria: también incorpora un ambiente cuidado, un ritmo agradable y una percepción global
+                de elegancia que distingue al restaurante dentro de Valencia.
+              </p>
+              <p>
+                Esa combinación convierte a Mey-Mey en una dirección muy interesante para quienes buscan algo más que
+                una comida correcta y desean descubrir una experiencia gastronómica con criterio propio.
+              </p>
+            </article>
+
+            <article class="panel">
+              <h2>Qué se encuentra en Mey-Mey</h2>
+              <ul>
+                <li>Respeto por la tradición cantonesa.</li>
+                <li>Importancia real del producto y su tratamiento.</li>
+                <li>Técnica al servicio del sabor, no del artificio.</li>
+                <li>Una experiencia de mesa pausada, cuidada y coherente.</li>
+                <li>Un entorno que refuerza la percepción de calidad.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="tradicion">
+          <div class="section-box">
+            <h2>Tradición cantonesa: equilibrio antes que exceso</h2>
+            <p>
+              La cocina cantonesa es una de las expresiones más apreciadas de la gastronomía china por su capacidad
+              para trabajar el sabor desde la precisión. En lugar de apoyarse en la saturación, se construye a partir
+              de la armonía: la cocción debe ser exacta, el ingrediente debe conservar su identidad y la técnica debe
+              ayudar a realzar, no a ocultar.
+            </p>
+            <p>
+              Mey-Mey recoge esa filosofía y la traslada al comensal con una naturalidad poco frecuente. La tradición
+              no aparece como simple estética, sino como fundamento real de la experiencia. Esa fidelidad al origen es
+              una de las razones por las que el restaurante transmite autenticidad.
+            </p>
+            <div class="note">
+              <strong>Idea clave:</strong> la cocina cantonesa destaca cuando el producto, el fuego y la técnica se
+              ordenan con equilibrio. Mey-Mey construye su identidad precisamente sobre esa base.
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="producto">
+          <div class="section-box">
+            <h2>Producto y técnica: la base de una cocina con criterio</h2>
+            <p>
+              En restauración, el producto bien tratado es una declaración de intenciones. La calidad no solo se ve;
+              también se percibe en la limpieza del sabor, en la sensación de equilibrio y en la forma en que cada
+              elaboración transmite cuidado. Mey-Mey proyecta justamente esa impresión: una cocina donde la materia
+              prima importa y donde la técnica se utiliza con mesura y sentido.
+            </p>
+            <p>
+              La técnica, cuando está bien integrada, no necesita mostrarse de forma evidente. Se reconoce en la
+              armonía general del plato, en la textura, en la ligereza de la experiencia y en la sensación de que nada
+              parece forzado. Esa es una de las cualidades que permiten a Mey-Mey diferenciarse dentro del panorama
+              gastronómico local.
+            </p>
+
+            <div class="kpi-grid">
+              <div class="kpi">
+                <strong>Producto</strong>
+                <p>La materia prima se sitúa en el centro y se trabaja con respeto, precisión y equilibrio.</p>
+              </div>
+              <div class="kpi">
+                <strong>Técnica</strong>
+                <p>El dominio del fuego y de la cocción se percibe como parte esencial de la experiencia.</p>
+              </div>
+              <div class="kpi">
+                <strong>Resultado</strong>
+                <p>Una cocina más limpia, más elegante y más fiel a la esencia cantonesa.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="experiencia">
+          <div class="section-box">
+            <h2>Experiencia y ambiente: una propuesta que va más allá del plato</h2>
+            <p>
+              La personalidad de un restaurante no se define únicamente por su cocina. También se construye en la
+              atmósfera, en la calma del espacio, en la sensación de cuidado y en la forma en que el comensal vive el
+              conjunto. Mey-Mey entiende esa dimensión de manera clara y la integra dentro de su propuesta con una
+              elegancia serena.
+            </p>
+            <p>
+              El ambiente acompaña la comida y potencia la percepción de calidad. El resultado es una experiencia más
+              completa, más agradable y más memorable. Para quienes valoran el detalle y desean disfrutar de la cocina
+              china desde una perspectiva más refinada, esa dimensión resulta especialmente importante.
+            </p>
+          </div>
+        </section>
+
+        <section class="section" id="por-que-destaca">
+          <div class="section-box">
+            <h2>Por qué Mey-Mey destaca en Valencia</h2>
+            <p>
+              Mey-Mey destaca porque ha conseguido algo que no siempre es fácil: mantener la raíz tradicional de la
+              cocina cantonesa y, al mismo tiempo, ofrecer una experiencia alineada con un comensal que busca calidad,
+              autenticidad y una atmósfera con personalidad.
+            </p>
+            <ul>
+              <li>No depende de fórmulas genéricas para resultar atractivo.</li>
+              <li>Proyecta una identidad culinaria coherente y reconocible.</li>
+              <li>Cuida la experiencia global, no solo el momento del plato.</li>
+              <li>Se presenta como una dirección gastronómica con criterio propio dentro de Valencia.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" id="contacto">
+          <div class="section-box">
+            <h2>Contacto y referencia local</h2>
+            <p>
+              Para quienes desean descubrir una propuesta donde tradición, técnica y experiencia se integran de forma
+              natural, Mey-Mey se consolida como una dirección destacada dentro de Valencia.
+            </p>
+            <p>
+              <strong>Mey-Mey</strong><br>
+              C/ de l'Historiador Diago, 19, Extramurs, 46007 València, Valencia<br>
+              Teléfono: <a href="tel:+34963840747">963 84 07 47</a><br>
+              Web: <a href="https://www.mey-mey.com/" target="_blank" rel="noopener noreferrer">https://www.mey-mey.com/</a>
+            </p>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <strong>Mey-Mey Docs</strong> · Guía de cocina cantonesa en Valencia
+        </footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
